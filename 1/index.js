@@ -1,6 +1,12 @@
 const express = require('express');
-const { writeFile, mkdir } = require('fs');
+const { promisify } = require('util');
+const fs = require('fs');
 const PORT = process.env.PORT || 3000;
+
+// TODO finish this stuff
+const writeFile = promisify(fs.writeFile);
+const mkdir = promisify(fs.mkdir);
+const readFile = promisify(fs.readFile);
 
 let visitCount = 0;
 
