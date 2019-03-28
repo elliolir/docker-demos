@@ -1,0 +1,18 @@
+version: '3'
+services:
+  service-one:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "service-two"
+    environment:
+      - DATE_PROVIDER=http://service-two:4000/
+      - PORT=8080
+  service-two:
+#    image: example-three-st
+    build: ../service-two/
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
